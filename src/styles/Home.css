@@ -1,0 +1,29 @@
+/* Last name */
+.home-hero__content h2 {
+  margin: 0;
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 0.9;
+}
+
+/* First name + age */
+.first-name-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.first-name-row h3 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.age {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.75;
+}
