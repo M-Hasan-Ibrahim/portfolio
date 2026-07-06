@@ -1,5 +1,6 @@
-import heroBackground from "../assets/images/hero-background.png";
-import profileImage from "../assets/images/profile-placeholder.png";
+import { useEffect, useState } from "react";
+import heroBackground from "../assets/images/profile_background.png";
+import profileImage from "../assets/images/profile_picture.jpeg";
 import { profile } from "../data/profile.js";
 import "../styles/Home.css";
 
@@ -19,10 +20,22 @@ function calculateAge(birthDate) {
   return age;
 }
 
-
-
 export default function Home() {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const age = calculateAge(profile.birthDate);
+
+  useEffect(() => {
+    if (!isProfileOpen) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsProfileOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isProfileOpen]);
 
   return (
     <section className="home-hero">
@@ -30,20 +43,48 @@ export default function Home() {
       <div className="home-hero__shade" />
 
       <div className="home-hero__content">
-        <img alt="Profile placeholder" className="profile-photo" src={profileImage} />
+        <button
+          aria-label="Open profile picture"
+          className="profile-photo-button"
+          onClick={() => setIsProfileOpen(true)}
+          type="button"
+        >
+          <img alt="Profile" className="profile-photo" src={profileImage} />
+        </button>
 
         <p className="eyebrow">{profile.location}</p>
 
-        <h2>{profile.lastName}</h2>
+        <h3>{profile.lastName},</h3>
 
         <div className="first-name-row">
-          <h3>{profile.firstName}</h3>
-          <span className="age">{age} years old</span>
+          <h4>{profile.firstName} -</h4>
+          <span className="age">{age}</span>
         </div>
 
         <p className="profession">{profile.profession}</p>
         <p className="summary">{profile.summary}</p>
       </div>
+
+      {isProfileOpen && (
+        <div
+          aria-modal="true"
+          className="profile-modal"
+          onClick={() => setIsProfileOpen(false)}
+          role="dialog"
+        >
+          <div className="profile-modal__content" onClick={(event) => event.stopPropagation()}>
+            <button
+              aria-label="Close profile picture"
+              className="profile-modal__close"
+              onClick={() => setIsProfileOpen(false)}
+              type="button"
+            >
+              x
+            </button>
+            <img alt="Profile enlarged" src={profileImage} />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

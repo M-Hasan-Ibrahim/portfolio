@@ -6,9 +6,10 @@ export default function Courses() {
     <PageShell eyebrow="Academic Path" title="Courses Taken">
       <div className="course-list">
         {courses.map((course) => (
-          <span className="course-pill" key={course}>
-            {course}
-          </span>
+          <article className="course-pill" key={course.title}>
+            <strong>{course.title}</strong>
+            <span>{course.description}</span>
+          </article>
         ))}
       </div>
     </PageShell>

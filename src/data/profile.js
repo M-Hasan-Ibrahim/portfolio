@@ -5,7 +5,7 @@ export const profile = {
   profession: "Software Engineer",
   location: "France, Île-de-France, Gif-sur-Yvette",
   summary:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus vel augue cursus gravida. Curabitur posuere, ligula non tempor luctus, massa risus posuere velit, vitae luctus ipsum justo sed nibh.",
+    "I’m a software engineer specializing in AI, full-stack development, and user centric design. I build products that make technology feel simple, useful, and human. My focus is not only on writing code, but on creating experiences that people can understand, trust, and enjoy using. From AI-powered tools to immersive digital environments, I aim to reduce complexity, solve real problems, and build software that helps people feel more capable.",
 };
 
 export const projects = [

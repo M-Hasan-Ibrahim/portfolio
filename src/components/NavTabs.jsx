@@ -1,4 +1,8 @@
+import tabBackground from "../assets/images/profile_background.png";
+
 export default function NavTabs({ activePath, onNavigate, routes }) {
+  const isHome = activePath === "/";
+
   return (
     <nav className="nav-tabs" aria-label="Portfolio sections">
       {routes.map((route) => (
@@ -7,13 +11,13 @@ export default function NavTabs({ activePath, onNavigate, routes }) {
           className="nav-tab"
           key={route.path}
           onClick={() => onNavigate(route.path)}
-          style={{ "--tab-image": `url('${route.image}')` }}
+          style={{ "--tab-image": `url('${tabBackground}')` }}
           type="button"
         >
           <span className="nav-tab__overlay" />
           <span className="nav-tab__content">
             <strong>{route.label}</strong>
-            <small>{route.description}</small>
+            {isHome && <small>{route.description}</small>}
           </span>
         </button>
       ))}
