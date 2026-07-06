@@ -190,5 +190,10 @@ function renderCv() {
   );
 }
 
-window.addEventListener("hashchange", renderApp);
+function renderWithTransition() {
+  renderApp();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+window.addEventListener("hashchange", renderWithTransition);
 renderApp();
