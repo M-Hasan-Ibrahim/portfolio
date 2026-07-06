@@ -1,12 +1,14 @@
 export default function CvViewer() {
+  const cvPath = `${import.meta.env.BASE_URL}cv/placeholder-cv.pdf`;
+
   return (
     <div className="cv-frame">
       <object
         aria-label="CV PDF preview"
-        data="/cv/placeholder-cv.pdf"
+        data={cvPath}
         type="application/pdf"
       >
-        <a href="/cv/placeholder-cv.pdf">Open the placeholder CV PDF</a>
+        <a href={cvPath}>Open the placeholder CV PDF</a>
       </object>
     </div>
   );
