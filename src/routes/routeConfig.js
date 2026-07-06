@@ -1,0 +1,43 @@
+import Home from "../pages/Home.jsx";
+import Projects from "../pages/Projects.jsx";
+import Courses from "../pages/Courses.jsx";
+import Contacts from "../pages/Contacts.jsx";
+import Cv from "../pages/Cv.jsx";
+
+export const routes = [
+  {
+    path: "/",
+    label: "Home",
+    description: "Start here with a quick introduction.",
+    image: "/assets/images/hero-background.png",
+    Component: Home,
+  },
+  {
+    path: "/projects",
+    label: "Projects",
+    description: "Selected builds, experiments, and case studies.",
+    image: "/assets/images/hero-background.png",
+    Component: Projects,
+  },
+  {
+    path: "/courses",
+    label: "Courses",
+    description: "Academic work and technical subjects taken.",
+    image: "/assets/images/profile-placeholder.png",
+    Component: Courses,
+  },
+  {
+    path: "/contacts",
+    label: "Contacts",
+    description: "Social links, email, and phone details.",
+    image: "/assets/images/hero-background.png",
+    Component: Contacts,
+  },
+  {
+    path: "/cv",
+    label: "CV",
+    description: "Full resume preview as a PDF document.",
+    image: "/assets/images/profile-placeholder.png",
+    Component: Cv,
+  },
+];
