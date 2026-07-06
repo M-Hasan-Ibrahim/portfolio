@@ -12,27 +12,36 @@ const stripBasePath = (pathname) => {
 };
 
 const routeFromLocation = () => {
-  const pathname = stripBasePath(window.location.pathname);
-  const routeExists = routes.some((route) => route.path === pathname);
+  const hashPath = window.location.hash.startsWith("#")
+    ? window.location.hash.slice(1)
+    : "";
+  const pathname = hashPath || window.location.pathname;
+  const normalizedPath = pathname === "" ? "/" : pathname;
+  const routePath = stripBasePath(normalizedPath);
+  const routeExists = routes.some((route) => route.path === routePath);
 
-  return routeExists ? pathname : "/";
+  return routeExists ? routePath : "/";
 };
 
 const browserPathForRoute = (path) => {
-  if (!basePath) return path;
-  return `${basePath}${path === "/" ? "/" : path}`;
+  const normalizedPath = path === "/" ? "/" : `/${path.replace(/^\/+/, "")}`;
+  return `#${normalizedPath}`;
 };
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(routeFromLocation);
 
   useEffect(() => {
-    const handlePopState = () => {
+    const handleLocationChange = () => {
       setCurrentPath(routeFromLocation());
     };
 
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
+    window.addEventListener("popstate", handleLocationChange);
+    window.addEventListener("hashchange", handleLocationChange);
+    return () => {
+      window.removeEventListener("popstate", handleLocationChange);
+      window.removeEventListener("hashchange", handleLocationChange);
+    };
   }, []);
 
   const activeRoute = useMemo(
@@ -41,9 +50,10 @@ export default function App() {
   );
 
   const navigate = (path) => {
-    if (path === currentPath) return;
-    window.history.pushState({}, "", browserPathForRoute(path));
-    setCurrentPath(path);
+    const nextPath = path === "/" ? "/" : `/${path.replace(/^\/+/, "")}`;
+    if (nextPath === currentPath) return;
+    window.location.hash = browserPathForRoute(nextPath);
+    setCurrentPath(nextPath);
   };
 
   return (
