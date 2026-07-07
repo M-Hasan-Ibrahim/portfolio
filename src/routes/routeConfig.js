@@ -1,6 +1,7 @@
 import Home from "../pages/Home.jsx";
 import Projects from "../pages/Projects.jsx";
 import Courses from "../pages/Courses.jsx";
+import Certificates from "../pages/Certificates.jsx";
 import Contacts from "../pages/Contacts.jsx";
 import Cv from "../pages/Cv.jsx";
 
@@ -27,6 +28,13 @@ export const routes = [
     description: "Academic work and technical subjects taken.",
     image: asset("assets/images/profile-placeholder.png"),
     Component: Courses,
+  },
+  {
+    path: "/certificates",
+    label: "Certificates",
+    description: "Verified credentials, badges, and training certificates.",
+    image: asset("assets/images/profile-placeholder.png"),
+    Component: Certificates,
   },
   {
     path: "/contacts",

@@ -133,8 +133,8 @@ export const courses = [
           "Optimization for Machine Learning",
           "Machine Learning for Text Mining",
           "Deep Learning",
-          "Signal Processing",
-          "Speech and Audio Processing",
+          "Representation of a Signal",
+          "Analysis of Speech and Audio Signals",
         ],
       },
       {
@@ -151,7 +151,12 @@ export const courses = [
       {
         title: "Software Engineering",
         description: "Description placeholder.",
-        items: [],
+        items: [
+          "Advanced Software Testing and Fuzzing",
+          "Empirical Methods in Software Engineering",
+          "Software Variability",
+          "Safe System Programming (in Rust)",
+        ],
       },
     ],
   },
@@ -162,23 +167,55 @@ export const courses = [
       {
         title: "Software Courses",
         description: "Description placeholder.",
-        items: [],
+        items: [
+          "Introduction to C Language",
+          "Data Structures and Algorithms",
+          "Object Oriented Programming in C#",
+          "Design Patterns and Object Oriented Programming in C++",
+          "Operating Systems",
+          "Destributed Systems Programming in Java",
+        ],
       },
       {
         title: "Other Courses",
         description: "Description placeholder.",
-        items: [],
+        items: [
+          "Introduction to Machine Learning",
+          "Operational Research",
+          "Networking",
+          "Signal Theory",
+          "Digital Signal Processing",
+          "Statistics",
+          "Numerical Methods and Optimization",
+          "Abstract Algebra",
+          "Linear Algebra",
+          "Real Analysis",
+          "Complex Analysis"
+        ],
       },
     ],
   },
 ];
 
-export const contacts = [
+
+export const certificates = [
   {
-    label: "Instagram",
-    value: "@eazen023",
-    href: "https://www.instagram.com/eazen023",
+    title: "CCNA: Introduction to Networks",
+    issuer: "Cisco Networking Academy",
+    badgeUrl: "https://www.credly.com/badges/46d6795c-bdc5-40a9-96d2-c9346f139cfd",
   },
+  {
+    title: "CCNA: Switching, Routing, and Wireless Essentials",
+    issuer: "Cisco Networking Academy",
+    badgeUrl: "https://www.credly.com/badges/20a0ad38-a01f-4e14-b883-3d9fb83a351e",
+  },
+  {
+    title: "CCNA: Enterprise Networking, Security, and Automation",
+    issuer: "Cisco Networking Academy",
+    badgeUrl: "https://www.credly.com/badges/aa907f70-f3c7-4fd3-9f1b-397c83a99893",
+  },
+];
+export const contacts = [
   {
     label: "LinkedIn",
     value: "linkedin.com/in/mohamad-hassan-ibrahim-275933289",
@@ -191,15 +228,22 @@ export const contacts = [
   },
   {
     label: "Email",
-    value: "mohamadhasan0711@gmail.com",
-    href: "mailto:mohamadhasan0711@gmail.com",
+    value: "mohamad.ibrahim@telecom-paris.fr",
+    href: "mailto:mohamad.ibrahim@telecom-paris.fr",
   },
   {
     label: "Phone",
     value: "+33 6 05 80 28 09",
     href: "tel:+33605802809",
   },
+  {
+    label: "Instagram",
+    value: "@eazen023",
+    href: "https://www.instagram.com/eazen023",
+  },
 ];
+
+
 
 
 

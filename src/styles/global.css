@@ -245,7 +245,7 @@ h1 {
   border-color: rgba(35, 50, 48, 0.18);
   background:
     linear-gradient(90deg, rgba(231, 226, 220, 0.88), rgba(222, 226, 225, 0.64) 48%, rgba(139, 164, 161, 0.2)),
-    var(--tab-image) center / 100% 500%;
+    var(--tab-image) center / 100% 600%;
   box-shadow:
     0 22px 34px rgba(35, 50, 48, 0.16),
     0 8px 0 rgba(35, 50, 48, 0.04);
@@ -256,21 +256,25 @@ h1 {
 }
 
 .portfolio-stage--home .nav-tab:nth-child(2) {
-  background-position: center 25%;
+  background-position: center 20%;
 }
 
 .portfolio-stage--home .nav-tab:nth-child(3) {
-  background-position: center 50%;
+  background-position: center 40%;
 }
 
 .portfolio-stage--home .nav-tab:nth-child(4) {
-  background-position: center 75%;
+  background-position: center 60%;
 }
 
 .portfolio-stage--home .nav-tab:nth-child(5) {
-  background-position: center 100%;
+  background-position: center 80%;
 }
 
+
+.portfolio-stage--home .nav-tab:nth-child(6) {
+  background-position: center 100%;
+}
 .portfolio-stage--home .nav-tab__overlay {
   background:
     linear-gradient(90deg, rgba(231, 226, 220, 0.9), rgba(222, 226, 225, 0.7) 52%, rgba(139, 164, 161, 0.28)),
@@ -317,14 +321,18 @@ h1 {
 
 .portfolio-stage--inner .nav-tab__content {
   place-content: center;
+  justify-items: center;
   width: 100%;
   min-height: 100%;
-  padding: 12px;
+  padding: 12px 8px;
 }
 
 .portfolio-stage--inner .nav-tab strong {
+  display: block;
+  width: 100%;
   font-size: 1rem;
   line-height: 1.05;
+  text-align: center;
 }
 
 .portfolio-stage--inner .nav-tab[aria-current="page"] .nav-tab__overlay {
@@ -729,6 +737,39 @@ h1 {
   }
 }
 
+.course-search {
+  max-width: 1180px;
+  margin: 0 0 18px;
+}
+
+.course-search input {
+  width: min(100%, 520px);
+  min-height: 44px;
+  border: 1px solid rgba(35, 50, 48, 0.14);
+  border-radius: 8px;
+  background: rgba(231, 226, 220, 0.72);
+  padding: 10px 14px;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 680;
+  outline: none;
+}
+
+.course-search input::placeholder {
+  color: var(--muted-ink);
+}
+
+.course-search input:focus {
+  border-color: rgba(35, 50, 48, 0.32);
+  box-shadow: 0 0 0 3px rgba(139, 164, 161, 0.26);
+}
+
+.course-search__mark {
+  border-radius: 4px;
+  background: rgba(213, 165, 151, 0.58);
+  color: var(--ink);
+  padding: 0 2px;
+}
 .course-schools {
   display: grid;
   gap: 24px;
@@ -811,6 +852,53 @@ h1 {
   padding: 14px;
 }
 
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1180px;
+}
+
+.certificate-card {
+  display: grid;
+  gap: 22px;
+  align-content: space-between;
+  min-height: 210px;
+  border: 1px solid rgba(35, 50, 48, 0.12);
+  border-radius: 8px;
+  background: rgba(231, 226, 220, 0.74);
+  padding: 22px;
+  backdrop-filter: blur(18px);
+}
+
+.certificate-card span {
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.certificate-card h2 {
+  margin: 8px 0 0;
+  font-size: 1.35rem;
+  line-height: 1.18;
+}
+
+.certificate-card a {
+  width: fit-content;
+  border: 1px solid rgba(35, 50, 48, 0.16);
+  border-radius: 8px;
+  background: var(--ink);
+  padding: 10px 13px;
+  color: var(--linen);
+  font-weight: 780;
+}
+
+.certificate-card a:hover,
+.certificate-card a:focus-visible {
+  background: #31413e;
+}
 .contact-item {
   display: grid;
   gap: 8px;
@@ -993,9 +1081,13 @@ h1 {
     width: 96px;
     min-height: 96px;
   }
-
   .portfolio-stage--inner .nav-tab__content {
-    padding: 10px;
+    padding: 8px 4px;
+  }
+
+  .portfolio-stage--inner .nav-tab strong {
+    font-size: clamp(0.72rem, 3.1vw, 0.86rem);
+    white-space: nowrap;
   }
 
   .project-filter__panel {
@@ -1046,6 +1138,10 @@ h1 {
   .project-modal__image-grid {
     grid-template-columns: 1fr;
   }
+  .certificate-grid {
+    grid-template-columns: 1fr;
+  }
+
   .course-group-grid {
     grid-template-columns: 1fr;
   }
@@ -1060,6 +1156,15 @@ h1 {
     scroll-behavior: auto;
   }
 }
+
+
+
+
+
+
+
+
+
 
 
 

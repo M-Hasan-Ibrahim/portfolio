@@ -56,7 +56,7 @@ export default function Projects() {
   }, [selectedProject]);
 
   return (
-    <PageShell eyebrow="Selected Work" title="Projects">
+    <PageShell eyebrow="University Work" title="Projects">
       <div className="project-filter" ref={filterRef}>
         <button
           aria-expanded={isFilterOpen}
