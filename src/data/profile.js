@@ -120,20 +120,56 @@ export const projects = [
 
 export const courses = [
   {
-    title: "Advanced Software Engineering",
-    description: "Design patterns, software architecture, testing, and modern development practices.",
+    institution: "Telecom Paris",
+    description: "Description placeholder.",
+    groups: [
+      {
+        title: "SPAI: Signal Processing & Artificial Intelligence",
+        description: "Description placeholder.",
+        items: [
+          "Statistics",
+          "Time Series",
+          "Machine Learning",
+          "Optimization for Machine Learning",
+          "Machine Learning for Text Mining",
+          "Deep Learning",
+          "Signal Processing",
+          "Speech and Audio Processing",
+        ],
+      },
+      {
+        title: "IGR: 3D & Interactive Systems",
+        description: "Description placeholder.",
+        items: [
+          "Interactive 3D Application Development",
+          "Interactive Application Development: Desktop, Mobile, and Web",
+          "Fundamentals of Computer Graphics",
+          "Human-Machine Interaction",
+          "Visualisation",
+        ],
+      },
+      {
+        title: "Software Engineering",
+        description: "Description placeholder.",
+        items: [],
+      },
+    ],
   },
   {
-    title: "Machine Learning Foundations",
-    description: "Supervised and unsupervised learning, model evaluation, and core machine learning algorithms.",
-  },
-  {
-    title: "Distributed Systems",
-    description: "Distributed computing, consensus, fault tolerance, replication, and scalable system design.",
-  },
-  {
-    title: "Human Computer Interaction",
-    description: "User-centered design, usability principles, interaction techniques, and interface evaluation.",
+    institution: "Faculty of Engineering in Lebanon",
+    description: "Description placeholder.",
+    groups: [
+      {
+        title: "Software Courses",
+        description: "Description placeholder.",
+        items: [],
+      },
+      {
+        title: "Other Courses",
+        description: "Description placeholder.",
+        items: [],
+      },
+    ],
   },
 ];
 
@@ -164,5 +200,6 @@ export const contacts = [
     href: "tel:+33605802809",
   },
 ];
+
 
 
