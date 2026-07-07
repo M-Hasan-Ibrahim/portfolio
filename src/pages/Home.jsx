@@ -73,18 +73,11 @@ export default function Home() {
           role="dialog"
         >
           <div className="profile-modal__content" onClick={(event) => event.stopPropagation()}>
-            <button
-              aria-label="Close profile picture"
-              className="profile-modal__close"
-              onClick={() => setIsProfileOpen(false)}
-              type="button"
-            >
-              x
-            </button>
-            <img alt="Profile enlarged" src={profileImage} />
+<img alt="Profile enlarged" src={profileImage} />
           </div>
         </div>
       )}
     </section>
   );
 }
+

@@ -3,7 +3,7 @@ import PageShell from "../components/PageShell.jsx";
 
 export default function Cv() {
   return (
-    <PageShell eyebrow="Resume" title="CV">
+    <PageShell eyebrow="Resume" title="CV, Curriculum Vitae">
       <CvViewer />
     </PageShell>
   );
