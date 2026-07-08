@@ -2,23 +2,24 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import PageShell from "../components/PageShell.jsx";
 import { projects } from "../data/data.js";
 
-const projectImageModules = import.meta.glob("../assets/images/projects/*", {
+const projectMediaModules = import.meta.glob("../assets/images/projects/*", {
   eager: true,
   import: "default",
 });
 
-const projectImages = Object.fromEntries(
-  Object.entries(projectImageModules).map(([path, src]) => [
+const projectMedia = Object.fromEntries(
+  Object.entries(projectMediaModules).map(([path, src]) => [
     path.split("/").at(-1),
     src,
   ]),
 );
 
-const resolveProjectImage = (image) => projectImages[image] ?? image;
+const resolveProjectMedia = (media) => projectMedia[media] ?? media;
+const isVideoMedia = (media) => /\.(mp4|webm|ogg)$/i.test(media);
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [selectedMediaIndex, setSelectedMediaIndex] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedTools, setSelectedTools] = useState([]);
   const filterRef = useRef(null);
@@ -37,11 +38,14 @@ export default function Projects() {
     );
   }, [selectedTools]);
 
-  const selectedProjectImages = selectedProject?.images ?? [];
-  const selectedProjectImageSources = selectedProjectImages.map(resolveProjectImage);
-  const selectedImageCount = selectedProjectImageSources.length;
-  const selectedImageSrc =
-    selectedImageIndex === null ? "" : selectedProjectImageSources[selectedImageIndex];
+  const selectedProjectMedia = selectedProject?.images ?? [];
+  const selectedProjectMediaSources = selectedProjectMedia.map(resolveProjectMedia);
+  const selectedMediaCount = selectedProjectMediaSources.length;
+  const selectedMediaName =
+    selectedMediaIndex === null ? "" : selectedProjectMedia[selectedMediaIndex];
+  const selectedMediaSrc =
+    selectedMediaIndex === null ? "" : selectedProjectMediaSources[selectedMediaIndex];
+  const selectedMediaIsVideo = isVideoMedia(selectedMediaName);
 
   const toggleTool = (tool) => {
     setSelectedTools((currentTools) =>
@@ -52,25 +56,25 @@ export default function Projects() {
   };
 
   const closeProject = () => {
-    setSelectedImageIndex(null);
+    setSelectedMediaIndex(null);
     setSelectedProject(null);
   };
 
-  const showPreviousImage = () => {
-    if (selectedImageCount < 2) return;
+  const showPreviousMedia = () => {
+    if (selectedMediaCount < 2) return;
 
-    setSelectedImageIndex((currentIndex) =>
+    setSelectedMediaIndex((currentIndex) =>
       currentIndex === null
         ? 0
-        : (currentIndex - 1 + selectedImageCount) % selectedImageCount,
+        : (currentIndex - 1 + selectedMediaCount) % selectedMediaCount,
     );
   };
 
-  const showNextImage = () => {
-    if (selectedImageCount < 2) return;
+  const showNextMedia = () => {
+    if (selectedMediaCount < 2) return;
 
-    setSelectedImageIndex((currentIndex) =>
-      currentIndex === null ? 0 : (currentIndex + 1) % selectedImageCount,
+    setSelectedMediaIndex((currentIndex) =>
+      currentIndex === null ? 0 : (currentIndex + 1) % selectedMediaCount,
     );
   };
 
@@ -87,9 +91,9 @@ export default function Projects() {
 
     if (Math.abs(swipeDistance) < 40) return;
     if (swipeDistance > 0) {
-      showPreviousImage();
+      showPreviousMedia();
     } else {
-      showNextImage();
+      showNextMedia();
     }
   };
 
@@ -110,13 +114,13 @@ export default function Projects() {
     if (!selectedProject) return undefined;
 
     const handleKeyDown = (event) => {
-      if (selectedImageIndex !== null) {
+      if (selectedMediaIndex !== null) {
         if (event.key === "Escape") {
-          setSelectedImageIndex(null);
+          setSelectedMediaIndex(null);
         } else if (event.key === "ArrowLeft") {
-          showPreviousImage();
+          showPreviousMedia();
         } else if (event.key === "ArrowRight") {
-          showNextImage();
+          showNextMedia();
         }
         return;
       }
@@ -128,7 +132,7 @@ export default function Projects() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedProject, selectedImageIndex, selectedImageCount]);
+  }, [selectedProject, selectedMediaIndex, selectedMediaCount]);
 
   return (
     <PageShell eyebrow="University Work" title="Projects">
@@ -248,24 +252,28 @@ export default function Projects() {
               )}
 
               <div className="project-modal__images">
-                <span>Project images</span>
-                {selectedImageCount > 0 ? (
+                <span>Project media</span>
+                {selectedMediaCount > 0 ? (
                   <div className="project-modal__image-grid">
-                    {selectedProjectImages.map((image, index) => (
+                    {selectedProjectMedia.map((media, index) => (
                       <button
-                        aria-label={`Open project image ${index + 1} of ${selectedImageCount}`}
+                        aria-label={`Open project media ${index + 1} of ${selectedMediaCount}`}
                         className="project-modal__image-button"
-                        key={image}
-                        onClick={() => setSelectedImageIndex(index)}
+                        key={media}
+                        onClick={() => setSelectedMediaIndex(index)}
                         type="button"
                       >
-                        <img alt="" src={resolveProjectImage(image)} />
+                        {isVideoMedia(media) ? (
+                          <video muted playsInline preload="metadata" src={resolveProjectMedia(media)} />
+                        ) : (
+                          <img alt="" src={resolveProjectMedia(media)} />
+                        )}
                       </button>
                     ))}
                   </div>
                 ) : (
                   <div className="project-modal__image-placeholder">
-                    Image gallery placeholder
+                    Media gallery placeholder
                   </div>
                 )}
               </div>
@@ -274,14 +282,14 @@ export default function Projects() {
         </div>
       )}
 
-      {selectedProject && selectedImageIndex !== null && selectedImageSrc && (
+      {selectedProject && selectedMediaIndex !== null && selectedMediaSrc && (
         <div
           className="project-lightbox"
-          onClick={() => setSelectedImageIndex(null)}
+          onClick={() => setSelectedMediaIndex(null)}
           role="presentation"
         >
           <section
-            aria-label="Project image viewer"
+            aria-label="Project media viewer"
             aria-modal="true"
             className="project-lightbox__window"
             onClick={(event) => event.stopPropagation()}
@@ -290,11 +298,11 @@ export default function Projects() {
             role="dialog"
           >
             <div className="project-lightbox__header">
-              <span>{selectedImageIndex + 1}/{selectedImageCount}</span>
+              <span>{selectedMediaIndex + 1}/{selectedMediaCount}</span>
               <button
-                aria-label="Close image viewer"
+                aria-label="Close media viewer"
                 className="project-lightbox__close"
-                onClick={() => setSelectedImageIndex(null)}
+                onClick={() => setSelectedMediaIndex(null)}
                 type="button"
               >
                 X
@@ -303,25 +311,29 @@ export default function Projects() {
 
             <div className="project-lightbox__stage">
               <button
-                aria-label="Previous image"
+                aria-label="Previous media"
                 className="project-lightbox__nav project-lightbox__nav--previous"
-                disabled={selectedImageCount < 2}
+                disabled={selectedMediaCount < 2}
                 onClick={(event) => {
                   event.stopPropagation();
-                  showPreviousImage();
+                  showPreviousMedia();
                 }}
                 type="button"
               >
                 {"\u2039"}
               </button>
-              <img alt="" src={selectedImageSrc} />
+              {selectedMediaIsVideo ? (
+                <video controls playsInline src={selectedMediaSrc} />
+              ) : (
+                <img alt="" src={selectedMediaSrc} />
+              )}
               <button
-                aria-label="Next image"
+                aria-label="Next media"
                 className="project-lightbox__nav project-lightbox__nav--next"
-                disabled={selectedImageCount < 2}
+                disabled={selectedMediaCount < 2}
                 onClick={(event) => {
                   event.stopPropagation();
-                  showNextImage();
+                  showNextMedia();
                 }}
                 type="button"
               >

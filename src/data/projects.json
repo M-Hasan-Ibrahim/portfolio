@@ -16,7 +16,14 @@
       "Collaborated on calibration, virtual surface alignment, gain testing, interaction design, visual scene assembly, report writing, and final presentation preparation."
     ],
     "githubLink": "https://github.com/Hadi891/PassiveHapticsGainTest",
-    "images": []
+    "images": [
+      "VR_1.png",
+      "VR_2.png",
+      "VR_3.png",
+      "VR_4.png",
+      "VR_5.png",
+      "VR_6.png"
+    ]
   },
   {
     "title": "Geo-Social Dating App",
@@ -37,7 +44,18 @@
       "Added AI assistant and chat suggestion features with the ChatGPT API, plus profile verification using AWS Rekognition."
     ],
     "githubLink": "https://github.com/M-Hasan-Ibrahim/geo-social-ai-platform",
-    "images": []
+    "images": [
+      "Dating_1.png",
+      "Dating_2.png",
+      "Dating_3.png",
+      "Dating_4.png",
+      "Dating_5.png",
+      "Dating_6.png",
+      "Dating_7.png",
+      "Dating_8.png",
+      "Dating_9.png",
+      "Dating_10.png"
+    ]
   },
   {
     "title": "Fundamentals of Computer Graphics Project",
@@ -55,7 +73,11 @@
       "Built a particle-based waterfall simulation and integrated animated droplets into the ray-traced output."
     ],
     "githubLink": "https://github.com/M-Hasan-Ibrahim/ComputerGraphicsProject",
-    "images": []
+    "images": [
+      "Frog_1.png",
+      "Frog_2.png",
+      "Frog_Video.mp4"
+    ]
   },
   {
     "title": "Level 1 SOC Analyst AI Agent",
