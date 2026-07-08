@@ -2,11 +2,27 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import PageShell from "../components/PageShell.jsx";
 import { projects } from "../data/profile.js";
 
+const projectImageModules = import.meta.glob("../assets/images/projects/*", {
+  eager: true,
+  import: "default",
+});
+
+const projectImages = Object.fromEntries(
+  Object.entries(projectImageModules).map(([path, src]) => [
+    path.split("/").at(-1),
+    src,
+  ]),
+);
+
+const resolveProjectImage = (image) => projectImages[image] ?? image;
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedTools, setSelectedTools] = useState([]);
   const filterRef = useRef(null);
+  const swipeStartX = useRef(null);
 
   const tools = useMemo(
     () => [...new Set(projects.flatMap((project) => project.technologies ?? []))],
@@ -21,12 +37,60 @@ export default function Projects() {
     );
   }, [selectedTools]);
 
+  const selectedProjectImages = selectedProject?.images ?? [];
+  const selectedProjectImageSources = selectedProjectImages.map(resolveProjectImage);
+  const selectedImageCount = selectedProjectImageSources.length;
+  const selectedImageSrc =
+    selectedImageIndex === null ? "" : selectedProjectImageSources[selectedImageIndex];
+
   const toggleTool = (tool) => {
     setSelectedTools((currentTools) =>
       currentTools.includes(tool)
         ? currentTools.filter((currentTool) => currentTool !== tool)
         : [...currentTools, tool],
     );
+  };
+
+  const closeProject = () => {
+    setSelectedImageIndex(null);
+    setSelectedProject(null);
+  };
+
+  const showPreviousImage = () => {
+    if (selectedImageCount < 2) return;
+
+    setSelectedImageIndex((currentIndex) =>
+      currentIndex === null
+        ? 0
+        : (currentIndex - 1 + selectedImageCount) % selectedImageCount,
+    );
+  };
+
+  const showNextImage = () => {
+    if (selectedImageCount < 2) return;
+
+    setSelectedImageIndex((currentIndex) =>
+      currentIndex === null ? 0 : (currentIndex + 1) % selectedImageCount,
+    );
+  };
+
+  const handleLightboxTouchStart = (event) => {
+    swipeStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleLightboxTouchEnd = (event) => {
+    if (swipeStartX.current === null) return;
+
+    const swipeEndX = event.changedTouches[0]?.clientX ?? swipeStartX.current;
+    const swipeDistance = swipeEndX - swipeStartX.current;
+    swipeStartX.current = null;
+
+    if (Math.abs(swipeDistance) < 40) return;
+    if (swipeDistance > 0) {
+      showPreviousImage();
+    } else {
+      showNextImage();
+    }
   };
 
   useEffect(() => {
@@ -46,14 +110,25 @@ export default function Projects() {
     if (!selectedProject) return undefined;
 
     const handleKeyDown = (event) => {
+      if (selectedImageIndex !== null) {
+        if (event.key === "Escape") {
+          setSelectedImageIndex(null);
+        } else if (event.key === "ArrowLeft") {
+          showPreviousImage();
+        } else if (event.key === "ArrowRight") {
+          showNextImage();
+        }
+        return;
+      }
+
       if (event.key === "Escape") {
-        setSelectedProject(null);
+        closeProject();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedProject]);
+  }, [selectedProject, selectedImageIndex, selectedImageCount]);
 
   return (
     <PageShell eyebrow="University Work" title="Projects">
@@ -136,7 +211,7 @@ export default function Projects() {
       {selectedProject && (
         <div
           className="project-modal"
-          onClick={() => setSelectedProject(null)}
+          onClick={closeProject}
           role="presentation"
         >
           <section
@@ -156,7 +231,7 @@ export default function Projects() {
               <div className="project-modal__github">
                 <span>GitHub</span>
                 {selectedProject.githubLink ? (
-                  <a href={selectedProject.githubLink}>Open repository</a>
+                  <a href={selectedProject.githubLink} rel="noreferrer" target="_blank">Open repository</a>
                 ) : (
                   <span className="project-modal__placeholder">
                     GitHub link placeholder
@@ -174,10 +249,18 @@ export default function Projects() {
 
               <div className="project-modal__images">
                 <span>Project images</span>
-                {selectedProject.images?.length > 0 ? (
+                {selectedImageCount > 0 ? (
                   <div className="project-modal__image-grid">
-                    {selectedProject.images.map((image) => (
-                      <img alt="" key={image} src={image} />
+                    {selectedProjectImages.map((image, index) => (
+                      <button
+                        aria-label={`Open project image ${index + 1} of ${selectedImageCount}`}
+                        className="project-modal__image-button"
+                        key={image}
+                        onClick={() => setSelectedImageIndex(index)}
+                        type="button"
+                      >
+                        <img alt="" src={resolveProjectImage(image)} />
+                      </button>
                     ))}
                   </div>
                 ) : (
@@ -186,6 +269,64 @@ export default function Projects() {
                   </div>
                 )}
               </div>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {selectedProject && selectedImageIndex !== null && selectedImageSrc && (
+        <div
+          className="project-lightbox"
+          onClick={() => setSelectedImageIndex(null)}
+          role="presentation"
+        >
+          <section
+            aria-label="Project image viewer"
+            aria-modal="true"
+            className="project-lightbox__window"
+            onClick={(event) => event.stopPropagation()}
+            onTouchEnd={handleLightboxTouchEnd}
+            onTouchStart={handleLightboxTouchStart}
+            role="dialog"
+          >
+            <div className="project-lightbox__header">
+              <span>{selectedImageIndex + 1}/{selectedImageCount}</span>
+              <button
+                aria-label="Close image viewer"
+                className="project-lightbox__close"
+                onClick={() => setSelectedImageIndex(null)}
+                type="button"
+              >
+                X
+              </button>
+            </div>
+
+            <div className="project-lightbox__stage">
+              <button
+                aria-label="Previous image"
+                className="project-lightbox__nav project-lightbox__nav--previous"
+                disabled={selectedImageCount < 2}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showPreviousImage();
+                }}
+                type="button"
+              >
+                {"\u2039"}
+              </button>
+              <img alt="" src={selectedImageSrc} />
+              <button
+                aria-label="Next image"
+                className="project-lightbox__nav project-lightbox__nav--next"
+                disabled={selectedImageCount < 2}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showNextImage();
+                }}
+                type="button"
+              >
+                {"\u203a"}
+              </button>
             </div>
           </section>
         </div>

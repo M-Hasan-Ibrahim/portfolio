@@ -1,0 +1,78 @@
+[
+  {
+    "institution": "Telecom Paris",
+    "description": "Description placeholder.",
+    "groups": [
+      {
+        "title": "SPAI: Signal Processing & Artificial Intelligence",
+        "description": "Description placeholder.",
+        "items": [
+          "Statistics",
+          "Time Series",
+          "Machine Learning",
+          "Optimization for Machine Learning",
+          "Machine Learning for Text Mining",
+          "Deep Learning",
+          "Representation of a Signal",
+          "Analysis of Speech and Audio Signals"
+        ]
+      },
+      {
+        "title": "IGR: 3D & Interactive Systems",
+        "description": "Description placeholder.",
+        "items": [
+          "Interactive 3D Application Development",
+          "Interactive Application Development: Desktop, Mobile, and Web",
+          "Fundamentals of Computer Graphics",
+          "Human-Machine Interaction",
+          "Visualisation"
+        ]
+      },
+      {
+        "title": "Software Engineering",
+        "description": "Description placeholder.",
+        "items": [
+          "Advanced Software Testing and Fuzzing",
+          "Empirical Methods in Software Engineering",
+          "Software Variability",
+          "Safe System Programming (in Rust)"
+        ]
+      }
+    ]
+  },
+  {
+    "institution": "Faculty of Engineering in Lebanon",
+    "description": "Description placeholder.",
+    "groups": [
+      {
+        "title": "Software Courses",
+        "description": "Description placeholder.",
+        "items": [
+          "Introduction to C Language",
+          "Data Structures and Algorithms",
+          "Object Oriented Programming in C#",
+          "Design Patterns and Object Oriented Programming in C++",
+          "Operating Systems",
+          "Destributed Systems Programming in Java"
+        ]
+      },
+      {
+        "title": "Other Courses",
+        "description": "Description placeholder.",
+        "items": [
+          "Introduction to Machine Learning",
+          "Operational Research",
+          "Networking",
+          "Signal Theory",
+          "Digital Signal Processing",
+          "Statistics",
+          "Numerical Methods and Optimization",
+          "Abstract Algebra",
+          "Linear Algebra",
+          "Real Analysis",
+          "Complex Analysis"
+        ]
+      }
+    ]
+  }
+]
