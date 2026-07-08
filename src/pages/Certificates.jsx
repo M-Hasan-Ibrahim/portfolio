@@ -1,5 +1,5 @@
 import PageShell from "../components/PageShell.jsx";
-import { certificates } from "../data/profile.js";
+import { certificates } from "../data/data.js";
 
 export default function Certificates() {
   return (

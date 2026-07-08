@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageShell from "../components/PageShell.jsx";
-import { courses } from "../data/profile.js";
+import { courses } from "../data/data.js";
 
 const shouldShowDescription = (description) =>
   description && description !== "Description placeholder.";

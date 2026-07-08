@@ -1,4 +1,4 @@
-import { contacts, courses, profile, projects } from "./data/profile.js";
+import { contacts, courses, profile, projects } from "./data/data.js";
 
 const routes = [
   {

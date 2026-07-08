@@ -1,4 +1,4 @@
-import { contacts } from "../data/profile.js";
+import { contacts } from "../data/data.js";
 
 const icons = {
   LinkedIn: (

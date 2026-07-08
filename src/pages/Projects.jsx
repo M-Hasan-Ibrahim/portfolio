@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import PageShell from "../components/PageShell.jsx";
-import { projects } from "../data/profile.js";
+import { projects } from "../data/data.js";
 
 const projectImageModules = import.meta.glob("../assets/images/projects/*", {
   eager: true,

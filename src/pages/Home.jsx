@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import heroBackground from "../assets/images/profile_background.png";
 import profileImage from "../assets/images/profile_picture.jpeg";
-import { profile } from "../data/profile.js";
+import { profile } from "../data/data.js";
 import "../styles/Home.css";
 
 function calculateAge(birthDate) {
