@@ -1,18 +1,13 @@
-import tabBackground from "../assets/images/profile_background.png";
-import certificatesBackground from "../assets/images/Certificates_BG.png";
-import contactsBackground from "../assets/images/Contact_BG.png";
-import coursesBackground from "../assets/images/Courses_BG.png";
-import cvBackground from "../assets/images/CV_BG.png";
-import homeBackground from "../assets/images/Home_BG.png";
-import projectsBackground from "../assets/images/Project_BG.png";
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+const tabBackground = asset("assets/images/profile_background.png");
 
 const tabBackgrounds = {
-  "/": homeBackground,
-  "/projects": projectsBackground,
-  "/courses": coursesBackground,
-  "/certificates": certificatesBackground,
-  "/contacts": contactsBackground,
-  "/cv": cvBackground,
+  "/": asset("assets/images/Home_BG.png"),
+  "/projects": asset("assets/images/Project_BG.png"),
+  "/courses": asset("assets/images/Courses_BG.png"),
+  "/certificates": asset("assets/images/Certificates_BG.png"),
+  "/contacts": asset("assets/images/Contact_BG.png"),
+  "/cv": asset("assets/images/CV_BG.png"),
 };
 
 export default function NavTabs({ activePath, onNavigate, routes }) {

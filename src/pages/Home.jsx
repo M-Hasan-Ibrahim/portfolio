@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import heroBackground from "../assets/images/profile_background.png";
-import profileImage from "../assets/images/profile_picture.jpeg";
 import { profile } from "../data/data.js";
 import "../styles/Home.css";
+
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+const heroBackground = asset("assets/images/profile_background.png");
+const profileImage = asset("assets/images/profile_picture.jpeg");
 
 function calculateAge(birthDate) {
   const birth = new Date(birthDate);
@@ -73,11 +75,10 @@ export default function Home() {
           role="dialog"
         >
           <div className="profile-modal__content" onClick={(event) => event.stopPropagation()}>
-<img alt="Profile enlarged" src={profileImage} />
+            <img alt="Profile enlarged" src={profileImage} />
           </div>
         </div>
       )}
     </section>
   );
 }
-

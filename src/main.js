@@ -176,15 +176,17 @@ function renderContacts() {
 }
 
 function renderCv() {
-  const cvPath = assetPath("/cv/placeholder-cv.pdf");
+  const cvPath = assetPath("/assets/CV.pdf");
   return renderPageShell(
     "Resume",
     "CV",
     `
-      <div class="cv-frame">
-        <object aria-label="CV PDF preview" data="${cvPath}" type="application/pdf">
-          <a href="${cvPath}">Open the placeholder CV PDF</a>
-        </object>
+      <div class="cv-state">
+        <p>Open or download the CV PDF from the links below.</p>
+        <div class="cv-actions">
+          <a class="cv-action cv-action--primary" href="${cvPath}" target="_blank" rel="noreferrer">Open PDF</a>
+          <a class="cv-action" href="${cvPath}" download>Download</a>
+        </div>
       </div>
     `,
   );

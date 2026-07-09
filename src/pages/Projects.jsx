@@ -2,19 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import PageShell from "../components/PageShell.jsx";
 import { projects } from "../data/data.js";
 
-const projectMediaModules = import.meta.glob("../assets/images/projects/*", {
-  eager: true,
-  import: "default",
-});
-
-const projectMedia = Object.fromEntries(
-  Object.entries(projectMediaModules).map(([path, src]) => [
-    path.split("/").at(-1),
-    src,
-  ]),
-);
-
-const resolveProjectMedia = (media) => projectMedia[media] ?? media;
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+const resolveProjectMedia = (media) => asset(`assets/images/projects/${media}`);
 const isVideoMedia = (media) => /\.(mp4|webm|ogg)$/i.test(media);
 
 export default function Projects() {
