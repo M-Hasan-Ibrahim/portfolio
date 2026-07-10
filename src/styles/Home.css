@@ -29,21 +29,6 @@
   font-weight: 400;
 }
 
-@media (max-width: 760px) {
-  .home-hero__content h3 {
-    font-size: clamp(2rem, 11vw, 3.5rem);
-  }
-
-  .first-name-row {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .first-name-row h4,
-  .age {
-    font-size: clamp(1.2rem, 6vw, 1.65rem);
-  }
-}
 .profile-photo-button {
   display: block;
   width: fit-content;
@@ -60,7 +45,8 @@
   outline-offset: 6px;
 }
 
-.profile-modal {
+.profile-modal,
+.personal-statement-modal {
   position: fixed;
   inset: 0;
   z-index: 20;
@@ -86,6 +72,157 @@
   width: 100%;
   max-height: 72vh;
   object-fit: cover;
+}
+
+.personal-statement-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 26px;
+  border: 1px solid rgba(35, 50, 48, 0.18);
+  border-radius: 8px;
+  background: var(--ink);
+  padding: 11px 16px;
+  color: var(--linen);
+  cursor: pointer;
+  font-weight: 780;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.personal-statement-link:hover,
+.personal-statement-link:focus-visible {
+  border-color: rgba(35, 50, 48, 0.3);
+  background: #31413e;
+  transform: translateY(-1px);
+}
+
+.personal-statement-link:focus-visible {
+  outline: 3px solid rgba(139, 164, 161, 0.5);
+  outline-offset: 3px;
+}
+
+.personal-statement-modal {
+  z-index: 30;
+  place-items: stretch center;
+  padding: 0 24px;
+}
+
+.personal-statement-modal__content {
+  position: relative;
+  width: min(92vw, 900px);
+  height: 100dvh;
+  max-height: none;
+  overflow: auto;
+  border: 1px solid rgba(231, 226, 220, 0.62);
+  border-radius: 0;
+  background:
+    linear-gradient(120deg, rgba(231, 226, 220, 0.98), rgba(222, 226, 225, 0.96)),
+    var(--linen);
+  padding: clamp(28px, 5vw, 54px);
+  box-shadow: 0 30px 90px rgba(35, 50, 48, 0.32);
+  scrollbar-color: rgba(35, 50, 48, 0.34) transparent;
+  scrollbar-width: thin;
+}
+
+.personal-statement-modal__close {
+  position: fixed;
+  top: 16px;
+  right: max(32px, calc((100vw - 900px) / 2 + 18px));
+  z-index: 31;
+  display: grid;
+  width: 38px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(35, 50, 48, 0.16);
+  border-radius: 8px;
+  background: rgba(35, 50, 48, 0.62);
+  color: var(--linen);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 820;
+  line-height: 1;
+}
+
+.personal-statement-modal__close:hover,
+.personal-statement-modal__close:focus-visible {
+  background: rgba(35, 50, 48, 0.78);
+}
+
+.personal-statement-modal__content h2 {
+  max-width: 12ch;
+  margin: 0 0 26px;
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 0.98;
+}
+
+.personal-statement-modal__body {
+  display: grid;
+  gap: 18px;
+  max-width: 78ch;
+  border-left: 5px solid var(--rose);
+  padding-left: clamp(18px, 3vw, 28px);
+}
+
+.personal-statement-modal__body p {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: clamp(1rem, 1.4vw, 1.08rem);
+  line-height: 1.8;
+}
+
+@media (max-width: 760px) {
+  .home-hero__content h3 {
+    font-size: clamp(2rem, 11vw, 3.5rem);
+  }
+
+  .first-name-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .first-name-row h4,
+  .age {
+    font-size: clamp(1.2rem, 6vw, 1.65rem);
+  }
+
+  .personal-statement-link {
+    width: 100%;
+  }
+
+  .profile-modal {
+    padding: 14px;
+  }
+
+  .personal-statement-modal {
+    padding: 0;
+  }
+
+  .personal-statement-modal__close {
+    top: 12px;
+    right: 12px;
+  }
+
+  .personal-statement-modal__content {
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    padding: 24px 18px 28px;
+  }
+
+  .personal-statement-modal__content h2 {
+    max-width: 100%;
+    font-size: clamp(2rem, 10vw, 3.1rem);
+  }
+
+  .personal-statement-modal__body {
+    gap: 16px;
+    padding-left: 16px;
+  }
 }
 
 
