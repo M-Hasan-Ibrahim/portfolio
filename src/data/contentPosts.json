@@ -1,0 +1,19 @@
+[
+  {
+    "id": "student-cv-before-software-year",
+    "date": "2026-07-10",
+    "title": "Student's CV",
+    "body": "This was my full CV before I even started my Software Engineering year, the final year of my studies. It feels like a small snapshot of the path that brought me here: telecommunications, computer engineering, projects, and the first signs of the software engineer I was becoming.",
+    "image": "assets/images/content/post_2.jpeg",
+    "clickable": true,
+    "detailType": "cv"
+  },
+  {
+    "id": "old-referee-chair",
+    "date": "2026-07-10",
+    "title": "An Old Image While Refereeing",
+    "body": "Watching from the referee chair, trying the post feature of my portfolio.",
+    "image": "assets/images/content/post_1.jpeg",
+    "clickable": false
+  }
+]

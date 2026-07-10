@@ -4,6 +4,7 @@ import Courses from "../pages/Courses.jsx";
 import Certificates from "../pages/Certificates.jsx";
 import Contacts from "../pages/Contacts.jsx";
 import Cv from "../pages/Cv.jsx";
+import Content from "../pages/Content.jsx";
 
 const asset = (filePath) => `${import.meta.env.BASE_URL}${filePath.replace(/^\/+/, "")}`;
 
@@ -49,5 +50,12 @@ export const routes = [
     description: "Full resume preview as a PDF document.",
     image: asset("assets/images/profile-placeholder.png"),
     Component: Cv,
+  },
+  {
+    path: "/content",
+    label: "Content",
+    description: "Personal posts, photos, and short updates.",
+    image: asset("assets/images/profile_background.png"),
+    Component: Content,
   },
 ];

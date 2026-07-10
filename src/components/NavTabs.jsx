@@ -8,6 +8,7 @@ const tabBackgrounds = {
   "/certificates": asset("assets/images/Certificates_BG.png"),
   "/contacts": asset("assets/images/Contact_BG.png"),
   "/cv": asset("assets/images/CV_BG.png"),
+  "/content": asset("assets/images/profile_background.png"),
 };
 
 export default function NavTabs({ activePath, onNavigate, routes }) {
