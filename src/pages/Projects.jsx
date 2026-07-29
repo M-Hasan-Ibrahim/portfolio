@@ -5,6 +5,8 @@ import { projects } from "../data/data.js";
 const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 const resolveProjectMedia = (media) => asset(`assets/images/projects/${media}`);
 const isVideoMedia = (media) => /\.(mp4|webm|ogg)$/i.test(media);
+const mediaClassName = (media) =>
+  /^Dating_.*\.png$/i.test(media) ? "project-media--dating" : undefined;
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -253,9 +255,9 @@ export default function Projects() {
                         type="button"
                       >
                         {isVideoMedia(media) ? (
-                          <video muted playsInline preload="metadata" src={resolveProjectMedia(media)} />
+                          <video className={mediaClassName(media)} muted playsInline preload="metadata" src={resolveProjectMedia(media)} />
                         ) : (
-                          <img alt="" src={resolveProjectMedia(media)} />
+                          <img alt="" className={mediaClassName(media)} src={resolveProjectMedia(media)} />
                         )}
                       </button>
                     ))}
@@ -298,7 +300,7 @@ export default function Projects() {
               </button>
             </div>
 
-            <div className="project-lightbox__stage">
+            <div className={`project-lightbox__stage ${mediaClassName(selectedMediaName) ?? ""}`.trim()}>
               <button
                 aria-label="Previous media"
                 className="project-lightbox__nav project-lightbox__nav--previous"
@@ -312,9 +314,9 @@ export default function Projects() {
                 {"\u2039"}
               </button>
               {selectedMediaIsVideo ? (
-                <video controls playsInline src={selectedMediaSrc} />
+                <video className={mediaClassName(selectedMediaName)} controls playsInline src={selectedMediaSrc} />
               ) : (
-                <img alt="" src={selectedMediaSrc} />
+                <img alt="" className={mediaClassName(selectedMediaName)} src={selectedMediaSrc} />
               )}
               <button
                 aria-label="Next media"
@@ -335,3 +337,4 @@ export default function Projects() {
     </PageShell>
   );
 }
+

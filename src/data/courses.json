@@ -35,7 +35,8 @@
           "Advanced Software Testing and Fuzzing",
           "Empirical Methods in Software Engineering",
           "Software Variability",
-          "Safe System Programming (in Rust)"
+          "Safe System Programming (in Rust)",
+          "Design Patterns for Decentralised Control and Coordination"
         ]
       }
     ]

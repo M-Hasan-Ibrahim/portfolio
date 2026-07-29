@@ -845,6 +845,31 @@ h1 {
   transform: scale(1.25);
 }
 
+
+.project-modal__image-button .project-media--dating {
+  justify-self: center;
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(520px, 70vh);
+  object-fit: contain;
+}
+
+.project-lightbox__stage.project-media--dating {
+  overflow: visible;
+  padding-bottom: 0;
+}
+
+.project-lightbox__stage .project-media--dating {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: calc(100vw - 220px);
+  max-height: calc(100dvh - 150px);
+  object-fit: contain;
+  transform: none;
+}
 .project-lightbox__nav {
   position: absolute;
   top: 50%;
@@ -1397,6 +1422,18 @@ h1 {
     transform: none;
   }
 
+
+  .project-lightbox__stage.project-media--dating {
+    padding-bottom: 0;
+  }
+
+  .project-lightbox__stage .project-media--dating {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100dvh - 104px);
+    transform: none;
+  }
   .project-lightbox__nav {
     top: auto;
     bottom: 10px;
