@@ -3,7 +3,8 @@ import PageShell from "../components/PageShell.jsx";
 import { projects } from "../data/data.js";
 
 const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
-const resolveProjectMedia = (media) => asset(`assets/images/projects/${media}`);
+const projectMediaVersion = "2163e5b";
+const resolveProjectMedia = (media) => `${asset(`assets/images/projects/${media}`)}?v=${projectMediaVersion}`;
 const isVideoMedia = (media) => /\.(mp4|webm|ogg)$/i.test(media);
 const mediaClassName = (media) =>
   /^Dating_.*\.png$/i.test(media) ? "project-media--dating" : undefined;
