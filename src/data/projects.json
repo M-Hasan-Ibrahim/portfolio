@@ -1,5 +1,34 @@
 [
   {
+    "title": "Padel & Tennis Court Reservation App",
+    "description": "A full-stack cross-platform mobile application for managing padel and tennis court reservations, user accounts, court availability, club content, and administrative operations.",
+    "date": "August 2026",
+    "technologies": [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Supabase Auth",
+      "Supabase Storage",
+      "Row Level Security",
+      "React Navigation",
+      "React Hook Form",
+      "Zod"
+    ],
+    "details": [
+      "Developed a cross-platform mobile application for Android and iOS with separate padel and tennis reservation flows, user authentication, profile management, and responsive light/dark interfaces.",
+      "Built a dynamic reservation system supporting multiple courts, 30-minute time slots, 1h/1.5h/2h durations, configurable pricing, operating hours, blocked periods, past-slot filtering, and reservation overlap prevention.",
+      "Designed the backend with Supabase and PostgreSQL, including tables for courts, operating hours, blocked slots, reservations, announcements, posts, and user profiles, secured using Row Level Security policies.",
+      "Implemented an administrator dashboard with role-based access control for creating and managing announcements and posts, including optional image uploads through Supabase Storage and automatic announcement expiration.",
+      "Structured the system for future expansion, allowing courts, schedules, pricing, maintenance periods, content, and reservation policies to be managed through backend configuration instead of hardcoded application logic."
+    ],
+    "githubLink": "This is a project that is meant for a client so I should keep the repository Private.",
+    "images": [
+      
+    ]
+  }, 
+  {
     "title": "Passive Haptics and Movement Gain in Virtual Reality",
     "description": "Designed a VR interaction system in Unity that combines passive haptics, movement gain, and fingertip-based interaction so one physical board can represent multiple virtual surfaces and puzzle objects.",
     "date": "June 2026",

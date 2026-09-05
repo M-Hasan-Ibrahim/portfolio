@@ -224,16 +224,26 @@ export default function Projects() {
                 <p>{selectedProject.description}</p>
               </div>
 
-              <div className="project-modal__github">
-                <span>GitHub</span>
-                {selectedProject.githubLink ? (
-                  <a href={selectedProject.githubLink} rel="noreferrer" target="_blank">Open repository</a>
-                ) : (
-                  <span className="project-modal__placeholder">
-                    GitHub link placeholder
-                  </span>
+             
+                {selectedProject.githubLink && (
+                  <div className="project-modal__github">
+                    <span>GitHub</span>
+
+                    {selectedProject.githubLink.includes("github.io") ||
+                    /^https?:\/\//i.test(selectedProject.githubLink) ? (
+                      <a
+                        href={selectedProject.githubLink}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Open repository
+                      </a>
+                    ) : (
+                      <span>{selectedProject.githubLink}</span>
+                    )}
+                  </div>
                 )}
-              </div>
+              
 
               {selectedProject.details?.length > 0 && (
                 <ul className="project-modal__details">

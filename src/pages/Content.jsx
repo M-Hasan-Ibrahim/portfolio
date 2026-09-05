@@ -88,37 +88,6 @@ export default function Content() {
           ),
         )}
       </section>
-
-      {selectedPost && (
-        <div className="content-modal" onClick={() => setSelectedPost(null)} role="presentation">
-          <section
-            aria-labelledby="content-feature-title"
-            aria-modal="true"
-            className="content-feature"
-            onClick={(event) => event.stopPropagation()}
-            role="dialog"
-          >
-            <div className="content-feature__header">
-              <span>{formatDate(selectedPost.date)}</span>
-              <button onClick={() => setSelectedPost(null)} type="button">
-                Close
-              </button>
-            </div>
-            <div className="content-feature__intro">
-              <PostMedia post={selectedPost} />
-              <div className="content-feature__copy">
-                <h2 id="content-feature-title">{selectedPost.title}</h2>
-                <p>{selectedPost.body}</p>
-              </div>
-            </div>
-            {selectedPost.detailType === "cv" && (
-              <div className="content-feature__cv">
-                <CvViewer />
-              </div>
-            )}
-          </section>
-        </div>
-      )}
     </PageShell>
   );
 }
