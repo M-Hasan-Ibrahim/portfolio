@@ -45,6 +45,7 @@ export default function CvViewer() {
 
         const pageElement = document.createElement("article");
         pageElement.className = "cv-page";
+        pageElement.dataset.reveal = "up";
 
         const pageLabel = document.createElement("span");
         pageLabel.className = "cv-page__label";
@@ -134,7 +135,7 @@ export default function CvViewer() {
 
   return (
     <div className="cv-layout">
-      <aside className="cv-panel" aria-label="CV details">
+      <aside className="cv-panel" aria-label="CV details" data-reveal="left">
         <span>Document</span>
         <h2>Resume preview</h2>
         <p>

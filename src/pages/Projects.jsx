@@ -128,7 +128,7 @@ export default function Projects() {
 
   return (
     <PageShell eyebrow="University Work" title="Projects">
-      <div className="project-filter" ref={filterRef}>
+      <div className="project-filter" data-reveal="up" ref={filterRef}>
         <button
           aria-expanded={isFilterOpen}
           className="project-filter__trigger"
@@ -177,6 +177,7 @@ export default function Projects() {
         {filteredProjects.map((project) => (
           <button
             className="item-card project-card"
+            data-reveal="up"
             key={project.title}
             onClick={() => setSelectedProject(project)}
             type="button"
@@ -201,7 +202,7 @@ export default function Projects() {
       </div>
 
       {filteredProjects.length === 0 && (
-        <p className="project-filter__empty">No projects match those tools yet.</p>
+        <p className="project-filter__empty" data-reveal="fade">No projects match those tools yet.</p>
       )}
 
       {selectedProject && (
@@ -214,11 +215,12 @@ export default function Projects() {
             aria-labelledby="project-modal-title"
             aria-modal="true"
             className="project-modal__window"
+            data-reveal-once
             onClick={(event) => event.stopPropagation()}
             role="dialog"
           >
             <div className="project-modal__content">
-              <div className="project-modal__intro">
+              <div className="project-modal__intro" data-reveal="up">
                 <span>{selectedProject.date}</span>
                 <h2 id="project-modal-title">{selectedProject.title}</h2>
                 <p>{selectedProject.description}</p>
@@ -226,7 +228,7 @@ export default function Projects() {
 
              
                 {selectedProject.githubLink && (
-                  <div className="project-modal__github">
+                  <div className="project-modal__github" data-reveal="up">
                     <span>GitHub</span>
 
                     {selectedProject.githubLink.includes("github.io") ||
@@ -246,7 +248,7 @@ export default function Projects() {
               
 
               {selectedProject.details?.length > 0 && (
-                <ul className="project-modal__details">
+                <ul className="project-modal__details" data-reveal="up">
                   {selectedProject.details.map((detail) => (
                     <li key={detail}>{detail}</li>
                   ))}
@@ -261,6 +263,7 @@ export default function Projects() {
                       <button
                         aria-label={`Open project media ${index + 1} of ${selectedMediaCount}`}
                         className="project-modal__image-button"
+                        data-reveal="up"
                         key={media}
                         onClick={() => setSelectedMediaIndex(index)}
                         type="button"

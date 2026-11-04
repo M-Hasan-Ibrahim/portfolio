@@ -71,6 +71,7 @@ export default function Content() {
           post.clickable ? (
             <article
               className="content-post content-post--clickable"
+              data-reveal="up"
               key={post.id}
               onClick={() => openPost(post)}
               onKeyDown={(event) => handleClickablePostKeyDown(event, post)}
@@ -81,7 +82,7 @@ export default function Content() {
               <PostBody post={post} />
             </article>
           ) : (
-            <article className="content-post" key={post.id}>
+            <article className="content-post" data-reveal="up" key={post.id}>
               <PostMedia post={post} />
               <PostBody post={post} />
             </article>

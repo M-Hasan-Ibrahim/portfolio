@@ -43,7 +43,7 @@ export default function Courses() {
 
   return (
     <PageShell eyebrow="Academic Path" title="Courses Taken">
-      <div className="course-search">
+      <div className="course-search" data-reveal="up">
         <input
           aria-label="Search courses"
           onChange={(event) => setSearchQuery(event.target.value)}
@@ -55,8 +55,8 @@ export default function Courses() {
 
       <div className="course-schools">
         {courses.map((school) => (
-          <section className="course-school" key={school.institution}>
-            <div className="course-school__header">
+          <section className="course-school" data-reveal="fade" key={school.institution}>
+            <div className="course-school__header" data-reveal="up">
               <h2>{school.institution}</h2>
               {shouldShowDescription(school.description) && (
                 <p>{school.description}</p>
@@ -65,7 +65,7 @@ export default function Courses() {
 
             <div className="course-group-grid">
               {school.groups.map((group) => (
-                <article className="course-group" key={group.title}>
+                <article className="course-group" data-reveal="up" key={group.title}>
                   <div className="course-group__header">
                     <h3>{group.title}</h3>
                     {shouldShowDescription(group.description) && (
