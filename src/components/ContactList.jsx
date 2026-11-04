@@ -34,6 +34,7 @@ export default function ContactList() {
       {contacts.map((contact) => (
         <a
           className="contact-item"
+          data-reveal="up"
           href={contact.href}
           key={contact.label}
         >

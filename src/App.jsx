@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import useScrollReveal from "./hooks/useScrollReveal.js";
 import PortfolioLayout from "./layouts/PortfolioLayout.jsx";
 import { routes } from "./routes/routeConfig.js";
 
@@ -30,6 +31,7 @@ const browserPathForRoute = (path) => {
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(routeFromLocation);
+  useScrollReveal();
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -48,6 +50,13 @@ export default function App() {
     () => routes.find((route) => route.path === currentPath) ?? routes[0],
     [currentPath],
   );
+
+  // Every page opens at the top. Runs before paint so the new page never
+  // flashes at the old scroll position, and uses "instant" to bypass the
+  // global `scroll-behavior: smooth`.
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [activeRoute.path]);
 
   const navigate = (path) => {
     const nextPath = path === "/" ? "/" : `/${path.replace(/^\/+/, "")}`;

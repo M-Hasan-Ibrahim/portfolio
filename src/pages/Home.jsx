@@ -56,33 +56,35 @@ export default function Home() {
   return (
     <>
       <section className="home-hero">
-        <img alt="" className="home-hero__background" src={heroBackground} />
+        <img alt="" className="home-hero__background" data-reveal="backdrop" src={heroBackground} />
         <div className="home-hero__shade" />
 
         <div className="home-hero__content">
           <button
             aria-label="Open profile picture"
             className="profile-photo-button"
+            data-reveal="zoom"
             onClick={() => setIsProfileOpen(true)}
             type="button"
           >
             <img alt="Profile" className="profile-photo" src={profileImage} />
           </button>
 
-          <p className="eyebrow">{profile.location}</p>
+          <p className="eyebrow" data-reveal="up">{profile.location}</p>
 
-          <h3>{profile.lastName},</h3>
+          <h3 data-reveal="up">{profile.lastName},</h3>
 
-          <div className="first-name-row">
+          <div className="first-name-row" data-reveal="up">
             <h4>{profile.firstName} -</h4>
             <span className="age">{age}</span>
           </div>
 
-          <p className="profession">{profile.profession}</p>
-          <p className="summary">{profile.summary}</p>
+          <p className="profession" data-reveal="up">{profile.profession}</p>
+          <p className="summary" data-reveal="up">{profile.summary}</p>
 
           <button
             className="personal-statement-link"
+            data-reveal="up"
             onClick={() => setIsStatementOpen(true)}
             type="button"
           >
@@ -121,11 +123,13 @@ export default function Home() {
             >
               x
             </button>
-            <p className="eyebrow">About me</p>
-            <h2 id="personal-statement-title">Building Technology That Feels Human</h2>
+            <p className="eyebrow" data-reveal="up">About me</p>
+            <h2 data-reveal="up" id="personal-statement-title">Building Technology That Feels Human</h2>
             <div className="personal-statement-modal__body">
               {personalStatement.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p data-reveal="up" key={paragraph}>
+                  {paragraph}
+                </p>
               ))}
             </div>
           </div>

@@ -6,7 +6,7 @@ export default function Certificates() {
     <PageShell eyebrow="Credentials" title="Certificates">
       <div className="certificate-grid">
         {certificates.map((certificate) => (
-          <article className="certificate-card" key={certificate.title}>
+          <article className="certificate-card" data-reveal="up" key={certificate.title}>
             <div>
               <span>{certificate.issuer}</span>
               <h2>{certificate.title}</h2>

@@ -20,6 +20,7 @@ export default function NavTabs({ activePath, onNavigate, routes }) {
         <button
           aria-current={activePath === route.path ? "page" : "false"}
           className="nav-tab"
+          data-reveal={isHome ? "up" : "soft"}
           key={route.path}
           onClick={() => onNavigate(route.path)}
           style={{ "--tab-image": `url('${isHome ? tabBackground : tabBackgrounds[route.path]}')` }}
