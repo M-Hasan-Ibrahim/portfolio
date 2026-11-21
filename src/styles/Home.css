@@ -74,13 +74,20 @@
   object-fit: cover;
 }
 
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
 .personal-statement-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  margin-top: 26px;
   border: 1px solid rgba(35, 50, 48, 0.18);
+  text-decoration: none;
   border-radius: 8px;
   background: var(--ink);
   padding: 11px 16px;

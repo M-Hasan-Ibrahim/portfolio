@@ -82,14 +82,23 @@ export default function Home() {
           <p className="profession" data-reveal="up">{profile.profession}</p>
           <p className="summary" data-reveal="up">{profile.summary}</p>
 
-          <button
-            className="personal-statement-link"
-            data-reveal="up"
-            onClick={() => setIsStatementOpen(true)}
-            type="button"
-          >
-            Personal Statement
-          </button>
+          <div className="home-actions" data-reveal="up">
+            <button
+              className="personal-statement-link"
+              onClick={() => setIsStatementOpen(true)}
+              type="button"
+            >
+              Personal Statement
+            </button>
+            <a
+              className="personal-statement-link"
+              href="https://library.mh-ibrahim.com"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              My Library
+            </a>
+          </div>
         </div>
 
         {isProfileOpen && (
