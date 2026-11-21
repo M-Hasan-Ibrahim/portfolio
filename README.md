@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio website scaffold.
+Personal portfolio website; you are authorized to use the template.
 
 ## Run
 
