@@ -94,7 +94,7 @@ export default function Home() {
               className="personal-statement-link"
               href="https://library.mh-ibrahim.com"
               rel="noopener noreferrer"
-              target="_blank"
+              // target="_blank"
             >
               My Library
             </a>
